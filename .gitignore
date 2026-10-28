@@ -1,0 +1,51 @@
+# =========================
+# CMake & Build Directories
+# =========================
+build/
+build-*/
+out/
+bin/
+CMakeCache.txt
+CMakeFiles/
+CMakeScripts/
+Makefile
+cmake_install.cmake
+install_manifest.txt
+compile_commands.json
+CTestTestfile.cmake
+_deps/
+
+# =========================
+# Visual Studio 2022 (Windows)
+# =========================
+.vs/
+*.user
+*.userosscache
+*.sln.docstates
+*.suo
+*.db
+*.opendb
+*.VC.db
+
+# =========================
+# VS Code (Fedora / Windows)
+# =========================
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.code-workspace
+
+# =========================
+# OS & Compiled Artifacts
+# =========================
+*.exe
+*.dll
+*.so
+*.dylib
+*.a
+*.o
+*.obj
+.DS_Store
+Thumbs.db
