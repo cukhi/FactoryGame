@@ -2,14 +2,13 @@
 
 **FactoryGame** is a logical puzzle game oriented around building and developing an optimized solution for manufacturing a given product. 
 
-Dive into procedurally generated factories, manage your robotic workforce, and solve intricate logistical puzzles to create the ultimate automated assembly line!
 
 ## ✨ Key Features
 
 - **Procedural Generation:** The game generates belt layouts procedurally, enabling players to redo a level over and over with completely different constraints and challenges.
 - **Resource Management & Optimization:** Players have a limited amount of robots to place along the generated belt layout. Each robot has different functions and properties. The main challenge is to manage them optimally, identify bottlenecks, and fix them.
 - **Progressive Difficulty:** As the player progresses, the required products become much more complex to manufacture, and the available pool of robots becomes less convenient, forcing creative problem-solving.
-- **Strategic Gameplay:** Plan ahead, calculate throughput, and refine your factory layout to achieve maximum efficiency. *(Added to complete your final bullet point!)*
+- **Strategic Gameplay:** Plan ahead, calculate throughput, and refine your factory layout to achieve maximum efficiency.
 
 ---
 
@@ -38,38 +37,14 @@ Dive into procedurally generated factories, manage your robotic workforce, and s
 - **Spacebar:** Start / Pause Factory Simulation
 - *(Add your specific controls here)*
 
-## ⚙️ Installation / Getting Started
-
-*(Provide instructions on how to download, build, or run the game. If it's a web game, provide a link. If it's downloadable, explain how to run the executable.)*
-
-**Windows:**
-1. Download the latest release from the [Releases](#) page.
-2. Extract the `.zip` file.
-3. Run `FactoryGame.exe`.
-
-**Source Code (For Developers):**
-```bash
-git clone https://github.com/yourusername/FactoryGame.git
-cd FactoryGame
-# Add build instructions here (e.g., open in Unity/Godot, run npm install, etc.)
-```
 
 ## 🗺️ Roadmap
 
 *(Share what you are currently working on or planning for the future to show the game is active.)*
 
-- [ ] Add Sandbox Mode
-- [ ] Introduce 5 new robot types
-- [ ] Implement global leaderboards for efficiency scores
-- [ ] Add sound effects and background music
+- [ ] Add Requirments
+- [ ] Build basic grid and robots UI 
+- [ ]  Add Menu 
+- [ ] Create a UML file 
 
-## 🐛 Feedback and Bug Reports
 
-Found a bug or have a suggestion to make the factory run smoother? Please open an issue in the [Issues](#) tab!
-
-## 📄 License
-
-*(State your license here. E.g., This project is licensed under the MIT License - see the LICENSE file for details. Or if it's proprietary: All rights reserved.)*
-
----
-**Created by [Your Name/Studio]**
