@@ -1,8 +1,14 @@
+#pragma once 
+
+
 
 enum Entity{
     none,
     robot,
+    robot1,
     belt,
+    ENTITY_COUNT
+
 
 
 };
@@ -12,11 +18,5 @@ struct Point{
     int y;    
 };
 
-struct Grid_Point{
-    Point point;
-    Entity entity;
-    bool has_product;
 
-
-
-};
+Point get_mouse_position();

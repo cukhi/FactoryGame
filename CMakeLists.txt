@@ -9,6 +9,6 @@ FetchContent_Declare(
 )
 FetchContent_MakeAvailable(raylib)
 
-add_executable(${PROJECT_NAME} main.cpp)
+add_executable(${PROJECT_NAME} main.cpp grid.cpp robot_panel.cpp)
 target_link_libraries(${PROJECT_NAME} raylib)
 
