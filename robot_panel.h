@@ -23,11 +23,16 @@ struct Belt{
 
 class SideEntities{
 private:
-    std::array<Entity_ui,ENTITY_COUNT -1> entity_inventory;
+    const int GRID_WIDTH = 300;
+    const int GRID_HEIGHT = 100;
+    const int CELL_SIZE = 100;
+    bool selected = false;
     void  init_entities();
 
 public:
+    std::array<Entity_ui,ENTITY_COUNT> entity_inventory;
+    
     SideEntities();
-    void select_entity();
+    Entity_ui select_entity();
     void ui();
 };

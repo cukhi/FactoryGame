@@ -32,8 +32,8 @@ int main()
     // Objects definitions
     Grid grid;
     SideEntities side_entities;
-    grid.print_grid_points();
-
+    
+     Entity_ui current_entity = side_entities.entity_inventory[3];
     while (!WindowShouldClose())
     {
 
@@ -46,7 +46,21 @@ int main()
         
         if(IsMouseButtonPressed(MOUSE_BUTTON_LEFT)){
             //functions for left click handling based on pos
-               grid.select_cell();
+        int mouse_x = GetMouseX();
+            
+            
+            if (mouse_x >= 1050) {
+                current_entity = side_entities.select_entity();
+            } 
+      
+            else {
+                grid.select_cell(current_entity); 
+            }
+              
+                
+            
+               
+              
         }
     }
 

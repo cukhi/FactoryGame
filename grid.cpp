@@ -44,7 +44,7 @@ void Grid::init_grid_points()
         
     }
     
-    void Grid::select_cell(){
+    void Grid::select_cell(Entity_ui selected_entity){
         
         Point pos = get_mouse_position();
         int cell_x = pos.x / CELL_SIZE;
@@ -53,20 +53,24 @@ void Grid::init_grid_points()
         int cells_per_row = GRID_WIDTH / CELL_SIZE;
         int total_cols = GRID_HEIGHT/CELL_SIZE;
         
-          cout << cell_x << " " << cell_y << endl;
+        
+
+        
         if(cell_x >= 0 && cell_x < cells_per_row && cell_y >= 0 && cell_y < total_cols){
             int index = (cell_y * cells_per_row) + cell_x;
            // cout << "index of the cell "<<  index << endl;
-            cout << "gp x " <<  grid_points[index].point.x << "gp y  " << grid_points[index].point.y << endl;
-          
-            grid_points[index].color = RED;
-        }   
             
+          
+            Color selected_color = selected_entity.color;
+            grid_points[index].color = selected_color;
+        }   
+     
        
         
 
 
     }
+   
     void Grid::build_grid()
     {
         for(const auto& gp : grid_points){

@@ -23,6 +23,7 @@ class Grid{
         Grid();
         void print_grid_points();
         void init_grid_points();
+        void select_cell(Entity_ui selected_entity);
         void select_cell();
         void build_grid();
 
