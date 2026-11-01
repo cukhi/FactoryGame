@@ -42,8 +42,8 @@
 
 *(Share what you are currently working on or planning for the future to show the game is active.)*
 
-- [ ] Add Requirments
-- [ ] Build basic grid and robots UI 
+- [ #] Add Requirments
+- [ #] Build basic grid and robots UI 
 - [ ]  Add Menu 
 - [ ] Create a UML file 
 
