@@ -16,6 +16,7 @@ struct Grid_Point{
     Point point;
     Entity entity;
     bool has_product;
+    Color color;
 
 
 

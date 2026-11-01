@@ -9,20 +9,32 @@ const int SCREEN_HEIGHT = 900;
 
 class Grid
 {
-
-    Point mouse_pos;
-
-   
-protected:
+private:
     vector<Grid_Point> grid_points;
-
     const int GRID_WIDTH = 1002;
     const int GRID_HEIGHT = 702;
     const int CELL_SIZE = 100;
-    
+
+   
+
+   
+
+   
 
 public:
-vector<Grid_Point> init_grid_points()
+    Grid() {
+        init_grid_points();
+    }
+    void print_grid_points() const{
+       for(const auto& gp : grid_points) {
+           cout << gp.entity << " "
+               << gp.has_product << " x: "
+               << gp.point.x << " y: "
+               << gp.point.y << endl;
+        }
+       
+}
+    void init_grid_points()
     {
 
         int cell_count = 0;
@@ -31,52 +43,73 @@ vector<Grid_Point> init_grid_points()
 
         for (int col = 0; col < full_cols; col++)
         {
+            
             for (int row = 0; row < full_rows; row++)
             {
+              
                 Grid_Point gp; 
-                gp.point.x = row;
-                gp.point.y = col;
+                gp.point.x = col;
+                gp.point.y = row;
                 gp.entity = none;
                 gp.has_product = false;
+                gp.color = WHITE;
+                grid_points.push_back(gp);
                 
             }
         }
+      
+        
         
     }
     Point get_mouse_position()
     {
+        Point mouse_pos;
         mouse_pos.x = GetMouseX();
         mouse_pos.y = GetMouseY();
 
-        cout << "Position is: " << mouse_pos.x << " " << mouse_pos.y << endl;
         return mouse_pos;
     }
-};
+    void get_cell_by_position() {
+        if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT)) {
 
-class UI : public Grid
-{
-
-  
-
-public:
-    void build_grid()
-    {
-        
-        for (int x = 0; x < GRID_WIDTH; x += CELL_SIZE)
-        {
-            DrawLine(x, 0, x, GRID_HEIGHT, LIGHTGRAY);
+            Point pos = get_mouse_position();
+            int x_cell = floor(pos.x / CELL_SIZE);
+            int y_cell = floor(pos.y / CELL_SIZE);
+            cout << x_cell << " " << y_cell << endl;
+            for (auto& gp : grid_points) {
+                if (gp.point.x == x_cell && gp.point.y == y_cell) {
+                    
+                    gp.color = RED;
+                }
+            }
         }
-
-       
-        for (int y = 0; y < GRID_HEIGHT; y += CELL_SIZE)
-        {
-            DrawLine(0, y, GRID_WIDTH, y, LIGHTGRAY);
-        }
-
-       
         
     }
+    
+    //UI methods
+
+    void build_grid()
+    {
+        for (const auto& gp : grid_points) {
+           
+            DrawRectangle(gp.point.x * CELL_SIZE, gp.point.y * CELL_SIZE, CELL_SIZE, CELL_SIZE,gp.color);
+            DrawRectangleLines(gp.point.x * CELL_SIZE, gp.point.y * CELL_SIZE, CELL_SIZE, CELL_SIZE, LIGHTGRAY);
+           
+        }
+        
+
+
+
+
+    
+    }
+    void color_cells() {
+
+    }
+    
 };
+
+
 
 int main()
 {
@@ -86,17 +119,23 @@ int main()
 
     // Objects definitions
     Grid grid;
-    UI grid_ui;
+   
+
+   
+
+  
 
     while (!WindowShouldClose())
     {
 
         BeginDrawing();
         ClearBackground(RAYWHITE);
-        
-        grid_ui.build_grid();
+
+        grid.build_grid();
+        grid.get_cell_by_position();
         EndDrawing();
-        grid.init_grid_points();
+        
+        
         
     
     }
