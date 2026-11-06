@@ -1,7 +1,13 @@
 #include <iostream>
+#include <vector>
+#include <cmath>
+
+
+//header files
 #include "raylib.h"
 #include "main.h"
-#include <vector>
+#include "robot_panel.h"
+#include "grid.h"
 using namespace std;
 
 const int SCREEN_WIDTH = 1600;
@@ -9,32 +15,20 @@ const int SCREEN_HEIGHT = 900;
 
 class Grid
 {
-private:
+
+    Point mouse_pos;
+
+   
+protected:
     vector<Grid_Point> grid_points;
+
     const int GRID_WIDTH = 1002;
     const int GRID_HEIGHT = 702;
     const int CELL_SIZE = 100;
-
-   
-
-   
-
-   
+    
 
 public:
-    Grid() {
-        init_grid_points();
-    }
-    void print_grid_points() const{
-       for(const auto& gp : grid_points) {
-           cout << gp.entity << " "
-               << gp.has_product << " x: "
-               << gp.point.x << " y: "
-               << gp.point.y << endl;
-        }
-       
-}
-    void init_grid_points()
+vector<Grid_Point> init_grid_points()
     {
 
         int cell_count = 0;
@@ -43,73 +37,51 @@ public:
 
         for (int col = 0; col < full_cols; col++)
         {
-            
             for (int row = 0; row < full_rows; row++)
             {
-              
                 Grid_Point gp; 
-                gp.point.x = col;
-                gp.point.y = row;
+                gp.point.x = row;
+                gp.point.y = col;
                 gp.entity = none;
                 gp.has_product = false;
-                gp.color = WHITE;
-                grid_points.push_back(gp);
                 
             }
         }
-      
-        
         
     }
     Point get_mouse_position()
     {
-        Point mouse_pos;
         mouse_pos.x = GetMouseX();
         mouse_pos.y = GetMouseY();
 
         return mouse_pos;
     }
-    void get_cell_by_position() {
-        if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT)) {
-
-            Point pos = get_mouse_position();
-            int x_cell = floor(pos.x / CELL_SIZE);
-            int y_cell = floor(pos.y / CELL_SIZE);
-            cout << x_cell << " " << y_cell << endl;
-            for (auto& gp : grid_points) {
-                if (gp.point.x == x_cell && gp.point.y == y_cell) {
-                    
-                    gp.color = RED;
-                }
-            }
-        }
-        
-    }
-    
-    //UI methods
-
-    void build_grid()
-    {
-        for (const auto& gp : grid_points) {
-           
-            DrawRectangle(gp.point.x * CELL_SIZE, gp.point.y * CELL_SIZE, CELL_SIZE, CELL_SIZE,gp.color);
-            DrawRectangleLines(gp.point.x * CELL_SIZE, gp.point.y * CELL_SIZE, CELL_SIZE, CELL_SIZE, LIGHTGRAY);
-           
-        }
-        
-
-
-
-
-    
-    }
-    void color_cells() {
-
-    }
-    
 };
 
+class UI : public Grid
+{
 
+  
+
+public:
+    void build_grid()
+    {
+        
+        for (int x = 0; x < GRID_WIDTH; x += CELL_SIZE)
+        {
+            DrawLine(x, 0, x, GRID_HEIGHT, LIGHTGRAY);
+        }
+
+       
+        for (int y = 0; y < GRID_HEIGHT; y += CELL_SIZE)
+        {
+            DrawLine(0, y, GRID_WIDTH, y, LIGHTGRAY);
+        }
+
+       
+        
+    }
+};
 
 int main()
 {
@@ -119,23 +91,17 @@ int main()
 
     // Objects definitions
     Grid grid;
-   
-
-   
-
-  
+    UI grid_ui;
 
     while (!WindowShouldClose())
     {
 
         BeginDrawing();
         ClearBackground(RAYWHITE);
-
-        grid.build_grid();
-        grid.get_cell_by_position();
+        
+        grid_ui.build_grid();
         EndDrawing();
-        
-        
+        grid.init_grid_points();
         
     
     }
