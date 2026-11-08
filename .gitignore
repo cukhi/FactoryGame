@@ -49,3 +49,4 @@ _deps/
 *.obj
 .DS_Store
 Thumbs.db
+/belt.cpp

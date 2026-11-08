@@ -9,6 +9,7 @@ FetchContent_Declare(
 )
 FetchContent_MakeAvailable(raylib)
 
-add_executable(${PROJECT_NAME} main.cpp grid.cpp robot_panel.cpp)
+add_executable(${PROJECT_NAME} main.cpp grid.cpp robot_panel.cpp "sprites.cpp" "sprites.h" "belt.cpp" "belt.h")
 target_link_libraries(${PROJECT_NAME} raylib)
 
+file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/sprites DESTINATION ${CMAKE_CURRENT_BINARY_DIR})

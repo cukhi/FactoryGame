@@ -11,8 +11,13 @@ struct Robot_struct{
 };
 struct Entity_ui{
     Point pos;
-    Color color;
     Entity entity;
+    bool is_sprite;
+    union {
+        Color color;
+        Rectangle sprite; //Rectangle is the texture from the map
+        
+    }render_data;
 
 };
 struct Belt{
@@ -27,12 +32,16 @@ private:
     const int GRID_HEIGHT = 100;
     const int CELL_SIZE = 100;
     bool selected = false;
-    void  init_entities();
+   
+    void  init_entities(std::vector<Rectangle> s);
+    
+    
 
 public:
     std::array<Entity_ui,ENTITY_COUNT> entity_inventory;
     
-    SideEntities();
-    Entity_ui select_entity();
-    void ui();
+    SideEntities(std::vector<Rectangle> s);
+  
+    Entity select_entity();
+    void ui(Texture2D master_texture);
 };

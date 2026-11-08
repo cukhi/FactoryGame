@@ -3,10 +3,10 @@
 
 
 enum Entity{
-    none,
+    belt,
     robot,
     robot1,
-    belt,
+    none,
     ENTITY_COUNT
 
 
