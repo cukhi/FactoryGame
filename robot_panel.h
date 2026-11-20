@@ -1,6 +1,7 @@
 #pragma once
 #include <array>
-
+#include "game_structs.h"
+#include "raylib.h"
 struct Robot_struct{
     bool is_working;
     int id;
@@ -9,21 +10,8 @@ struct Robot_struct{
     Point pos;
 
 };
-struct Entity_ui{
-    Point pos;
-    Entity entity;
-    bool is_sprite;
-    union {
-        Color color;
-        Rectangle sprite; //Rectangle is the texture from the map
-        
-    }render_data;
 
-};
-struct Belt{
-    bool has_item;
-    Point pos;
-};
+
 
 
 class SideEntities{

@@ -40,18 +40,19 @@ int main()
     SpriteMapHandler sprites;
     sprites.Load("sprites/Frame1.png",SPRITE_MAP_SIZE);
     SideEntities side_entities(sprites.sprite_frames);
+    
    
 
     Entity current_entity = side_entities.entity_inventory[3].entity;
-   
+  
     while (!WindowShouldClose())
     {
 
         BeginDrawing();
         ClearBackground(RAYWHITE);
       
-        grid.build_grid(side_entities.entity_inventory,sprites.master_texture);
-        
+       
+        grid.build_grid(side_entities.entity_inventory, sprites.master_texture);
         side_entities.ui(sprites.master_texture);
         EndDrawing();
 
