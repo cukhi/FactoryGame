@@ -1,28 +1,14 @@
 #pragma once
 #include <vector>
 #include <unordered_map>
-
+#include "game_structs.h"
 #include "main.h"
 #include "robot_panel.h"
 
-enum Directions {
-	e,
-	n,
-	w,
-	s,
-	
-	
-};
-
-struct Belt_struct {
-	int index;
-	bool has_product;
-	
-	Directions direction;
-	std::unordered_map<int,std::vector<bool>> neighbors;
 
 
-};
+
+
 
 class Belt {
 	Belt_struct belt_struct;
@@ -37,6 +23,6 @@ public:
 
 	Belt();
 	void generate_belt_line(std::vector<Grid_Point>& gp, int cells_per_row);
-	std::unordered_map<int, std::vector<bool>> check_neighbors(std::vector<Grid_Point>& gp, int center, int cells_per_row);
-	
+	neighbors_map check_neighbors(std::vector<Grid_Point>& gp, int center, int cells_per_row);
+	void set_directions(Belt_struct &bs);
 };

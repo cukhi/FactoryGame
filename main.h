@@ -1,10 +1,5 @@
 #pragma once 
-
-
-struct Point{
-    int x;
-    int y;    
-};
+#include "game_structs.h"
 
 
 Point get_mouse_position();

@@ -2,14 +2,7 @@
 #include <array>
 #include "game_structs.h"
 #include "raylib.h"
-struct Robot_struct{
-    bool is_working;
-    int id;
-    float speed;
-    float cost;
-    Point pos;
 
-};
 
 
 
